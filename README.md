@@ -38,7 +38,7 @@ SpaceSpice /
 | Oyun Motoru       | **Unity**       |
 | Modelleme         | **Blender**     |
 | Arayüz & Dokular | **Photoshop**   |
-| Kodlama           | C# (Unity)            |
+| Kodlama           | **C#** (Unity)            |
 
 ---
 
@@ -47,7 +47,7 @@ SpaceSpice /
 ### 1. Depoyu Klonla
 
 ```bash
-git clone https://github.com/<kullanıcı-adın>/SpaceSpice.git
+git clone https://github.com/GhostPet/SpaceSpice-Game.git
 ```
 
 ### 2. Unity ile Aç
