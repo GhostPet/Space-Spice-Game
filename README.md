@@ -16,17 +16,18 @@
 
 ## 🗂 Proje Yapısı
 
-SpaceSpice/
-
-├── Game/                     # [🎮 Unity Proje Dosyaları](Game/)
-│   ├── Assets/
-│   ├── Scenes/
-│   ├── Scripts/
+```
+SpaceSpice /
+├── Game /                # 🎮 Unity Proje Dosyaları
+│   ├── Assets /
+│   ├── Scenes /
+│   ├── Scripts /
 │   └── ...
 │
-└── Docs/
-├── SpaceSpiceGDD.docx    # [📄 Oyun Tasarım Dokümanı (Word)](Docs/SpaceSpiceGDD.docx)
-└── SpaceSpiceGDD.pdf     # [📄 Oyun Tasarım Dokümanı (PDF)](Docs/SpaceSpiceGDD.pdf)
+└── Docs /
+├── SpaceSpiceGDD.docx    # 📄 Oyun Tasarım Dokümanı (Word)
+└── SpaceSpiceGDD.pdf     # 📄 Oyun Tasarım Dokümanı (PDF)
+```
 
 ---
 
