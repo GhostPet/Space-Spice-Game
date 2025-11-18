@@ -33,12 +33,12 @@ SpaceSpice /
 
 ## ⚙️ Teknolojiler
 
-| Amaç             | Kullanılan Teknoloji |
-| ----------------- | --------------------- |
-| Oyun Motoru       | **Unity**       |
-| Modelleme         | **Blender**     |
-| Arayüz & Dokular | **Photoshop**   |
-| Kodlama           | **C#** (Unity)            |
+| Amaç             | Kullanılan Teknoloji       |
+| ----------------- | --------------------------- |
+| Oyun Motoru       | **Unity** 6000.0.62f1 |
+| Modelleme         | **Blender**           |
+| Arayüz & Dokular | **Photoshop**         |
+| Kodlama           | **C#** (Unity)        |
 
 ---
 
@@ -79,5 +79,5 @@ Bu proje kapalı kaynak olup **tüm hakları saklıdır**.
 
 Kaynak kodu, modeller, dokular, müzikler ve diğer varlıklar **ticari veya ticari olmayan** hiçbir amaçla **kopyalanamaz, dağıtılamaz, yeniden yayınlanamaz veya türev çalışmalar oluşturulamaz**.
 
-Detaylı lisans bilgisi için:  
+Detaylı lisans bilgisi için:
 ➡️ [LICENSE](LICENSE)
