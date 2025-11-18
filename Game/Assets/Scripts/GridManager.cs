@@ -3,36 +3,28 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
 	[SerializeField] private int width, height;
-	[SerializeField] private Tile grassTilePrefab;
-	[SerializeField] private Tile kitchenTilePrefab;
-	[SerializeField] private Tile restaurrantTilePrefab;
 	[SerializeField] private Transform tileParent;
+	[SerializeField] private Floor TileFloor;
 
-	private void Start() {
+	private void Awake() {
 		GenerateGrid();
 	}
 
 	private void GenerateGrid() {
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < height; j++) {
-				var spawnedTileType = grassTilePrefab;
+		for (int i =0; i < width; i++) {
+			for (int j =0; j < height; j++) {
+				// Create parent GameObject for the tile (do not use Instantiate for a new empty GameObject)
+				var spawnedParent = new GameObject($"Tile {i} {j}");
+				spawnedParent.transform.SetParent(tileParent);
+				// Place parent at tile position so child can be local at zero
+				spawnedParent.transform.position = new Vector3(i,0, j);
+				spawnedParent.AddComponent<Tile>();
 
-				// Dýþ Kýsým Çim
-				if (i == 0 || j == 0 || i == width-1 || j == height-1) {
-					spawnedTileType = grassTilePrefab;
+				// Instantiate the floor prefab once as a child of the parent
+				if (TileFloor != null) {
+					var spawnedTile = Instantiate(TileFloor, spawnedParent.transform.position, Quaternion.identity, spawnedParent.transform);
+					spawnedTile.name = "TileFloor";
 				}
-				// Üstten 3 Satýr Mutfak
-				else if (j > height-5) {
-					spawnedTileType = kitchenTilePrefab;
-				}
-				// Geri Kalan Kýsým Restoran
-				else {
-					spawnedTileType = restaurrantTilePrefab;
-				}
-
-				// Oluþtur, Pozisyonu ayarla ve Ýsimlendir
-				var spawnedTile = Instantiate(spawnedTileType, new Vector3(i, 0, j), Quaternion.identity, tileParent);
-				spawnedTile.name = $"Tile {i} {j}";
 			}
 		}
 	}
