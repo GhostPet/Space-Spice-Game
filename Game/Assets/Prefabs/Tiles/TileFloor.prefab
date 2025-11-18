@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2088289196837365202}
   - component: {fileID: 6785702953621589103}
   - component: {fileID: 1292530451447374338}
-  - component: {fileID: -3187818909498311480}
   - component: {fileID: 2278599389203270515}
   m_Layer: 8
   m_Name: TileFloor
@@ -111,22 +110,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &-3187818909498311480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3165383336509963565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83ad334a4486b2e459b14b913a77a5fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isHighlightable: 1
-  itemName: Default Item
-  defaultHighlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  emissionIntensity: 2
 --- !u!114 &2278599389203270515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,3 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c78746328ff60e4390e117e24890ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHighlightable: 1
+  defaultHighlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  emissionIntensity: 2

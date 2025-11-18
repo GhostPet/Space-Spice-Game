@@ -94,6 +94,16 @@ public class Player : MonoBehaviour
 				gameState = GameState.TileEdit;
 				Debug.Log("Switched to Tile Edit Mode");
 			}
+
+			// After changing game state, remove any highlights
+			if (currentHighlighted != null) {
+				if (currentHighlighted.TryGetComponent(out Item previousItem)) {
+					previousItem.RemoveHighlight();
+				} else if (currentHighlighted.TryGetComponent(out Floor previousFloor)) {
+					previousFloor.RemoveHighlight();
+				}
+				currentHighlighted = null;
+			}
 		}
 	}
 
@@ -114,7 +124,7 @@ public class Player : MonoBehaviour
 		Vector3 origin = transform.position + Vector3.up * interaction.originHeight;
 		Vector3 dir = lastInteractDirection.sqrMagnitude > 0.0001f ? lastInteractDirection.normalized : transform.forward;
 
-		// If GameState is ItemInteract, use SphereCast to find item
+		// If GameState is ItemInteract or ItemEdit, use SphereCast to find item
 		if (gameState == GameState.ItemInteract || gameState == GameState.ItemEdit)
 		{
 			if (Physics.SphereCast(origin, interaction.radius, dir, out RaycastHit hit, interaction.distance, interaction.itemLayerMask))
@@ -155,9 +165,39 @@ public class Player : MonoBehaviour
 				currentSelected = null;
 			}
 		}
+		// Else If GameState is TileEdit, use SphereCast to find tile
 		else if (gameState == GameState.TileEdit)
 		{
-			// Highlight floor tiles (not implemented)
+			// Change origin to be slightly lower to better hit floor
+			var floorOrigin = transform.position + Vector3.up * (interaction.originHeight - 1f);
+			if (Physics.SphereCast(floorOrigin, interaction.radius, dir, out RaycastHit hit, interaction.distance, interaction.floorLayerMask))
+			{
+				var previousSelected = currentSelected;
+				var previousHighlighted = currentHighlighted;
+				currentSelected = hit.collider.gameObject;
+				currentHighlighted = null;
+				// If highlighting enabled, highlight
+				if (currentSelected.TryGetComponent(out Floor floor))
+				{
+					if (floor.IsHighlightable() && highlight.enable)
+					{
+						floor.Highlight(highlight.color);
+					}
+					currentHighlighted = currentSelected;
+				}
+
+			} else
+			{
+				// No floor hit, remove selection/highlight
+				if (currentHighlighted != null) {
+					if (currentHighlighted.TryGetComponent(out Floor previousFloor)) {
+						previousFloor.RemoveHighlight();
+					}
+					currentHighlighted = null;
+				}
+				currentSelected = null;
+				currentSelected = null;
+			}
 		}
 		else
 		{
